@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData( //定義全域主題
+          brightness: Brightness.light, //選擇亮度主題，有白色/黑色兩種可選
+          primaryColor: Colors.blue, //選擇基準色值
+          accentColor: Colors.lightBlue[100]), //選擇強調色值
+      home: ThemeExample(),
+    );
+  }
+}
+class ThemeExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("ThemeExample"),
+      ),
+      body: Container(
+        color: Theme.of(context).primaryColor, //背景顏色引用primaryColor
+        margin: EdgeInsets.all(50.0),
+        padding: EdgeInsets.all(10.0),
+        child: Text(
+          "MaterialApp Theme Color",
+          style: TextStyle(
+              fontSize: 24, color: Theme.of(context).accentColor), //引用accentColor
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
